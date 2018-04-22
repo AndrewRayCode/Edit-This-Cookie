@@ -14,6 +14,18 @@ $.fx.speeds._default = 200;
 
 jQuery(document).ready(function(){
 	++data.nPopupClicked;
+
+	/***************************************************************************
+	 * Workaround for Chromium #428044 bug
+	 * https://bugs.chromium.org/p/chromium/issues/detail?id=428044#c35
+	 **************************************************************************/
+	const height = document.body.clientHeight;
+	document.body.style.height = `${height + 1}px`;
+	setTimeout(() => document.body.style.height = `${height + 2}px`, 50);
+	/***************************************************************************
+	 * End of workaround
+	 **************************************************************************/
+
 	start();
 });
 
